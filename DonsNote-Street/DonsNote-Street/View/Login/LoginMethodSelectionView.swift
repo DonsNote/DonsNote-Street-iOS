@@ -17,7 +17,7 @@ struct LoginMethodSelectionView: View {
                     .font(.largeTitle)
                     .bold()
                     .multilineTextAlignment(.center)
-
+                
                 NavigationLink(destination: SignUpView()) {
                     Text("Sign up with StreetArt")
                         .fontWeight(.semibold)
@@ -27,7 +27,7 @@ struct LoginMethodSelectionView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
-
+                
                 Button(action: {
                     // TODO: Apple 로그인 로직
                 }) {
@@ -41,7 +41,7 @@ struct LoginMethodSelectionView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
-
+                
                 Button(action: {
                     // TODO: Google 로그인 로직
                 }) {
@@ -55,7 +55,7 @@ struct LoginMethodSelectionView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
-
+                
                 Spacer()
             }
             .padding()

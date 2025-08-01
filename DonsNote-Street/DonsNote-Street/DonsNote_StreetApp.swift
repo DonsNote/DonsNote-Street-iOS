@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct DonsNote_StreetApp: App {
+    
+    let islogin: Bool = UserDefaults.standard.bool(forKey: "islogin")
+    
     var body: some Scene {
+        
         WindowGroup {
-            LoginMethodSelectionView()
+            
+            if islogin {
+                UserPageView()
+            }
+            
+            else {
+                LoginMethodSelectionView()
+            }
         }
     }
 }
