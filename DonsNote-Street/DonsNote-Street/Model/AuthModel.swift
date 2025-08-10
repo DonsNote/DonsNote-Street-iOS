@@ -7,11 +7,9 @@
 
 import Foundation
 
-struct AuthModel: Codable {
-    var provider:   String = "apple"
-    var uid:        String = ""
-    var authCode:   String = ""
-    var userId:     String = ""
-    var password:   String = ""
-    var email:      String = ""
+struct TokenData: Codable {
+    
+    let accessToken: String
+    let refreshToken: String
 }
+

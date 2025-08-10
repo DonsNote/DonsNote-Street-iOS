@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
-    
+
     @StateObject private var viewModel = SignUpViewModel()
     
     var body: some View {
@@ -23,13 +23,20 @@ struct SignUpView: View {
             ConfirmPasswordField(viewModel: viewModel)
             
             Button("Next") {
-                
+                viewModel.signUp()
             }
             .disabled(!viewModel.isFormValid)
             .foregroundColor(viewModel.isFormValid ? .white : .gray)
             .padding()
             .background(viewModel.isFormValid ? Color.blue : Color.gray)
             .cornerRadius(10)
+            .alert(isPresented: $viewModel.showingErrorAlert) {
+                Alert(
+                    title: Text("가입 실패"),
+                    message: Text(viewModel.errorMessage),
+                    dismissButton: .default(Text("다시 시도하기"))
+                )
+            }
         }
         .padding(20)
     }

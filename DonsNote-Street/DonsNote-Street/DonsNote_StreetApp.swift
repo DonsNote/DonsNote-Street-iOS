@@ -10,13 +10,13 @@ import SwiftUI
 @main
 struct DonsNote_StreetApp: App {
     
-    let islogin: Bool = UserDefaults.standard.bool(forKey: "islogin")
+    @AppStorage("isLogin") var isLogin: Bool = false
     
     var body: some Scene {
         
         WindowGroup {
             
-            if islogin {
+            if isLogin {
                 UserPageView()
             }
             

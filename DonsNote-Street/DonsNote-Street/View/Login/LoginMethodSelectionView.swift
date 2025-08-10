@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct LoginMethodSelectionView: View {
+    
+    @StateObject private var appleViewModel = AppleLoginViewModel()
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 30) {
@@ -28,19 +32,11 @@ struct LoginMethodSelectionView: View {
                         .cornerRadius(10)
                 }
                 
-                Button(action: {
-                    // TODO: Apple 로그인 로직
-                }) {
-                    HStack {
-                        Image(systemName: "applelogo")
-                        Text("Continue with Apple")
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.black)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                }
+                SignInWithAppleButton(
+                    onRequest: appleViewModel.handleAppleRequest,
+                    onCompletion: appleViewModel.handleAppleCompletion
+                )
+                .frame(height: 45)
                 
                 Button(action: {
                     // TODO: Google 로그인 로직
