@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 class SignUpViewModel: ObservableObject {
     
@@ -58,39 +57,43 @@ class SignUpViewModel: ObservableObject {
         return isFormValid
     }
     
-    func signUp() {
-        let parameters: [String: Any] = [
-            "provider" : "local",
-            "userId" : userId,
-            "email" : email,
-            "password" : password
-        ]
+    @MainActor
+    func signUp() async {
+        guard validateAll() else { return }
         
-        AF.request(ApiInfo.baseUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .validate()
-            .responseDecodable(of: TokenData.self) { response in
-                switch response.result {
-                case .success(let tokenData):
-                    do {
-                        try KeyChain(account: "ServerToken", service: "DonsNote.StreetApp").saveItem(tokenData.accessToken)
-                        try KeyChain(account: "RefreshToken", service: "DonsNote.StreetApp").saveItem(tokenData.refreshToken)
-                        DispatchQueue.main.async {
-                            UserDefaults.standard.set(true, forKey: "isLogin")
-                        }
-                        print("SignUp Success")
-                    }
-                    
-                    catch {
-                        self.errorMessage = "회원 가입 중 문제가 발생하였습니다. 다시 시도해주세요."
-                        self.showingErrorAlert = true
-                        print("KeyChain Error: \(error)")
-                    }
-                    
-                case.failure(let error):
-                    self.errorMessage = "회원 가입에 실패했습니다. 다시 시도해주세요."
-                    self.showingErrorAlert = true
-                    print("SignUp Error: \(error)")
-                }
+        let signUpRequest = LocalSignUpRequest(
+            name: userId,
+            email: email,
+            password: password,
+            info: nil,
+            userImgURL: nil
+        )
+        
+        do {
+            let tokenData = try await NetworkService.shared.request(
+                .localSignUp(signUpRequest),
+                responseType: TokenData.self
+            )
+            
+            try TokenManager.shared.saveTokens(tokenData)
+            TokenManager.shared.setLoginState(true)
+            
+            print("SignUp Success")
+            
+        } catch {
+            handleError(error)
+        }
+    }
+    
+    private func handleError(_ error: Error) {
+        if let networkError = error as? NetworkError {
+            errorMessage = networkError.localizedDescription
+        } else {
+            errorMessage = "회원 가입 중 문제가 발생하였습니다. 다시 시도해주세요."
+        }
+        showingErrorAlert = true
+        print("SignUp Error: \(error)")
+    }
             }
     }
 }

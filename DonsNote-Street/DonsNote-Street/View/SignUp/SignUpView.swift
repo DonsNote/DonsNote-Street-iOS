@@ -23,7 +23,9 @@ struct SignUpView: View {
             ConfirmPasswordField(viewModel: viewModel)
             
             Button("Next") {
-                viewModel.signUp()
+                Task {
+                    await viewModel.signUp()
+                }
             }
             .disabled(!viewModel.isFormValid)
             .foregroundColor(viewModel.isFormValid ? .white : .gray)

@@ -106,7 +106,7 @@ struct KeyChain {
     // Server Token & Refresh Token
     static var ServerToken: String {
         do {
-            let storedToken = try KeyChain(account: "ServerToken", service: "Donsnote.StreetApp").readItem()
+            let storedToken = try KeyChain(account: "ServerToken", service: "DonsNote.StreetApp").readItem()
             return storedToken
         }
         
@@ -117,7 +117,7 @@ struct KeyChain {
     
     static var RefreshToken: String {
         do {
-            let storedToken = try KeyChain(account: "RefreshToken", service: "Donsnote.StreetApp").readItem()
+            let storedToken = try KeyChain(account: "RefreshToken", service: "DonsNote.StreetApp").readItem()
             return storedToken
         }
         
@@ -128,7 +128,7 @@ struct KeyChain {
     
     static func deleteServerToken() {
         do {
-            try KeyChain(account: "ServerToken", service: "Donsnote.StreetApp").deleteItem()
+            try KeyChain(account: "ServerToken", service: "DonsNote.StreetApp").deleteItem()
         }
         catch {
             print("Unable to delete Server Token")
@@ -137,7 +137,7 @@ struct KeyChain {
     
     static func deleteRefreshToken() {
         do {
-            try KeyChain(account: "RefreshToken", service: "Donsnote.StreetApp").deleteItem()
+            try KeyChain(account: "RefreshToken", service: "DonsNote.StreetApp").deleteItem()
         }
         catch {
             print("Unable to delete Refresh Token")
