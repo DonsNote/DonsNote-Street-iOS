@@ -6,11 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		449BEFF22E3B78E300B5F260 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 449BEFF12E3B78E300B5F260 /* Alamofire */; };
-		449BEFF72E3B798800B5F260 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 449BEFF62E3B798800B5F260 /* AlamofireImage */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		449BEFEF2E3B76D000B5F260 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -41,8 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				449BEFF22E3B78E300B5F260 /* Alamofire in Frameworks */,
-				449BEFF72E3B798800B5F260 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,8 +79,6 @@
 			);
 			name = "DonsNote-Street";
 			packageProductDependencies = (
-				449BEFF12E3B78E300B5F260 /* Alamofire */,
-				449BEFF62E3B798800B5F260 /* AlamofireImage */,
 			);
 			productName = "DonsNote-Street";
 			productReference = 449BEFBA2E3A4F7600B5F260 /* DonsNote-Street.app */;
@@ -118,8 +109,6 @@
 			mainGroup = 449BEFB12E3A4F7600B5F260;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				449BEFF02E3B78E300B5F260 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				449BEFF52E3B798800B5F260 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 449BEFBB2E3A4F7600B5F260 /* Products */;
@@ -365,38 +354,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		449BEFF02E3B78E300B5F260 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = exactVersion;
-				version = 5.10.2;
-			};
-		};
-		449BEFF52E3B798800B5F260 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.3.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		449BEFF12E3B78E300B5F260 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 449BEFF02E3B78E300B5F260 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		449BEFF62E3B798800B5F260 /* AlamofireImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 449BEFF52E3B798800B5F260 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
-			productName = AlamofireImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 449BEFB22E3A4F7600B5F260 /* Project object */;
 }

@@ -14,12 +14,8 @@ enum APIEndpoint {
     
     var path: String {
         switch self {
-        case .localSignUp:
-            return "/auth/signup"
-        case .appleLogin:
-            return "/auth/apple"
-        case .googleLogin:
-            return "/auth/google"
+        case .localSignUp, .appleLogin, .googleLogin:
+            return "/auth"
         }
     }
     
@@ -71,6 +67,7 @@ enum HTTPMethod: String {
 
 // MARK: - Request Models
 struct LocalSignUpRequest: Codable {
+    let provider: String = "local"
     let name: String
     let email: String
     let password: String

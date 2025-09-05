@@ -94,6 +94,4 @@ class SignUpViewModel: ObservableObject {
         showingErrorAlert = true
         print("SignUp Error: \(error)")
     }
-            }
-    }
 }

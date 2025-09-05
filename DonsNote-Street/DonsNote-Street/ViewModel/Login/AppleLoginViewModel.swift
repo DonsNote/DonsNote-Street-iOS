@@ -54,10 +54,4 @@ class AppleLoginViewModel: NSObject, ObservableObject {
             print("Apple Login Error with AppleServer: \(error)")
         }
     }
-                }
-            
-        case .failure(let error):
-            print("Apple Login Error with AppleServer : \(error)")
-        }
-    }
 }

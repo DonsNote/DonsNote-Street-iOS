@@ -11,9 +11,9 @@ struct ApiInfo {
     
     static var baseUrl: String {
         #if DEBUG
-        return "http://localhost:5000/api/v1"
+        return "http://localhost:5000"
         #else
-        return "https://api.donsnote.com/v1"
+        return "https://api.donsnote.com"
         #endif
     }
     
